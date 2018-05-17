@@ -1,0 +1,331 @@
+
+
+/*** DON'T FORGET FONTS!! ***/
+@font-face {
+    font-family: 'BentonSansBBVA Bold';
+    src: url("/static/fonts/BBVA/BentonSansBBVA-Bold.eot"); /* IE9 Compat Modes */
+    src: url("/static/fonts/BBVA/BentonSansBBVA-Bold.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+      url("/static/fonts/BBVA/BentonSansBBVA-Bold.woff") format("woff"), /* Pretty Modern Browsers */
+      url("/static/fonts/BBVA/BentonSansBBVA-Bold.ttf") format("truetype"), /* Safari, Android, iOS */
+      url("/static/fonts/BBVA/BentonSansBBVA-Bold.svg#ed8435d366a4ac4bee8ecd80fc76b4b5") format("svg"); /* Legacy iOS */
+    font-style: normal;
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: 'BentonSansBBVA Book';
+    src: url("/static/fonts/BBVA/BentonSansBBVA-Book.eot"); /* IE9 Compat Modes */
+    src: url("/static/fonts/BBVA/BentonSansBBVA-Book.eot?#iefix") format("embedded-opentype"), 
+      url("/static/fonts/BBVA/BentonSansBBVA-Book.woff") format("woff"), 
+      url("/static/fonts/BBVA/BentonSansBBVA-Book.ttf") format("truetype"), 
+      url("/static/fonts/BBVA/BentonSansBBVA-Book.svg#ace0ed135dbc9c8610ca3f0bf5ce3b98") format("svg"); /* Legacy iOS */
+    font-style: normal;
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: 'BentonSansBBVA Light';
+    src: url("/static/fonts/BBVA/BentonSansBBVA-Light.eot"); /* IE9 Compat Modes */
+    src: url("/static/fonts/BBVA/BentonSansBBVA-Light.eot?#iefix") format("embedded-opentype"), 
+      url("/static/fonts/BBVA/BentonSansBBVA-Light.woff") format("woff"), 
+      url("/static/fonts/BBVA/BentonSansBBVA-Light.ttf") format("truetype"), 
+      url("/static/fonts/BBVA/BentonSansBBVA-Light.svg#f78597f6497138650c310eebac22df9c") format("svg"); /* Legacy iOS */
+    font-style: normal;
+    font-weight: 100;
+}
+
+@font-face {
+    font-family: 'BentonSansBBVA Medium';
+    src: url("/static/fonts/BBVA/BentonSansBBVA-Medium.eot"); /* IE9 Compat Modes */
+    src: url("/static/fonts/BBVA/BentonSansBBVA-Medium.eot?#iefix") format("embedded-opentype"), 
+      url("/static/fonts/BBVA/BentonSansBBVA-Medium.woff") format("woff"), 
+      url("/static/fonts/BBVA/BentonSansBBVA-Medium.ttf") format("truetype"), 
+      url("/static/fonts/BBVA/BentonSansBBVA-Medium.svg#a8060284b02b2442ada7a339eccbdbe3") format("svg"); /* Legacy iOS */
+    font-style: normal;
+    font-weight: 500;
+}
+
+
+$bbva_primaryfont: "BentonSansBBVA Book","Times New Roman",Arial,Helvetica,sans-serif;
+$bbva_titlefont: "BentonSansBBVA Bold","Times New Roman",Arial,Helvetica,sans-serif;
+$bbva_mediumfont: "BentonSansBBVA Medium","Times New Roman",Arial,Helvetica,sans-serif;
+
+$navyfed_primaryfont: "Helvetica Neue",Helvetica,Roboto,Arial,sans-serif;
+$navyfed_titlefont: "Source Sans Pro","Helvetica Neue",Helvetica,Roboto,Arial,sans-serif;
+$navyfed_mediumfont: "Helvetica Neue",Helvetica,Roboto,Arial,sans-serif;
+
+$themes: (
+  BBVA: (
+    primary1: #072146,
+    primary2: #004481,
+    primary3: #1973b8,
+    primary4: rgba(25, 115, 184, 0.5),
+    primary5: rgba(25, 115, 184, 0.5),
+    secondary1: #f3923a,
+    white1: #ffffff,
+    white2: #f4f4f4,
+    white3: #f4f4f4,
+    bodytext: #2c3e50
+  ),
+  NavyFed: (
+    primary1: #FFFFFF, // white (logo background)
+    primary2: #042d69, // dark blue
+    primary3: #5498ad, // aqua
+    primary4: rgba(84,152,173,.8), //lighter blue (Active button)
+    primary5: #418ba2, //dark aqua (button border color)
+    secondary1: #f3923a, //bbva
+    white1: #ffffff, //bbva
+    white2: #e6f0f3, //light blue
+    white3: #F8F7F0, //light beige
+    bodytext: #2c3e50 // dark blue
+  )
+  /* NavyFed: (
+    primary1: #5498ad,
+    primary1b: #418ba2,
+    primary1c: rgba(84, 152, 173, 0.5),
+    primary2: #042d69,
+    primary3: rgba(230,240,243,1),
+    primary3b: rgba(230,240,243,0.5),
+    secondary1: #f8f7f2,
+    secondary2: #f3923a,
+    text_primary: #233a5e,
+    text_secondary: #5a9bb0
+  )*/
+);
+
+$fonts: (
+  BBVA: (
+    titles: $bbva_titlefont,
+    primary: $bbva_primaryfont,
+    medium: $bbva_mediumfont
+  ),
+  NavyFed: (
+    titles: $navyfed_titlefont,
+    primary: $navyfed_primaryfont,
+    medium: $navyfed_mediumfont
+  )
+);
+
+
+
+
+
+ @mixin themify($fonts: $fonts) {
+  // Properties to output, more can be added (e.g. `border-left-color`)
+  $properties: ('font-family');
+
+  // Iterate over the themes
+  @each $theme, $colors in $fonts {
+    // Iterate over the colors from the theme
+    @each $color-name, $color in $colors {
+      // Iterate over the properties
+      @each $property in $properties {
+        // Create a selector
+        // e.g. `.theme .color-primary, .theme.color-primary`
+        .theme-#{$theme} .#{$property}-#{$color-name},
+        .theme-#{$theme}.#{$property}-#{$color-name} {
+          #{$property}: $color;
+        }
+      }
+    }
+  }
+} @include themify($fonts);
+
+@function theme-styles($key: 'primary', $variant: 'base') {
+  $map: map-get($fonts, $key);
+  @return map-get($map, $variant);
+}
+
+
+/// Themify mixin
+/// @param {Map} $themes [$themes] - Map of themes to use
+@mixin themify($themes: $themes) {
+  // Properties to output, more can be added (e.g. `border-left-color`)
+  $properties: ('border-color', 'background-color', 'color');
+
+  // Iterate over the themes
+  @each $theme, $colors in $themes {
+    // Iterate over the colors from the theme
+    @each $color-name, $color in $colors {
+      // Iterate over the properties
+      @each $property in $properties {
+        // Create a selector
+        // e.g. `.theme .color-primary, .theme.color-primary`
+        .theme-#{$theme} .#{$property}-#{$color-name},
+        .theme-#{$theme}.#{$property}-#{$color-name} {
+          #{$property}: $color;
+        }
+      }
+    }
+  }
+} @include themify($themes);
+
+
+@function theme-styles($key: 'primary', $variant: 'base') {
+  $map: map-get($themes, $key);
+  @return map-get($map, $variant);
+}
+
+/*** Variables ***/
+$bbva_primary1: theme-styles('BBVA', 'primary1');
+$bbva_primary2: theme-styles('BBVA', 'primary2');
+$bbva_primary3: theme-styles('BBVA', 'primary3');
+$bbva_primary4: theme-styles('BBVA', 'primary4');
+$bbva_primary5: theme-styles('BBVA', 'primary5');
+$bbva_secondary1: theme-styles('BBVA', 'secondary1');
+$bbva_white1: theme-styles('BBVA', 'white1');
+$bbva_white2: theme-styles('BBVA', 'white2');
+$bbva_white3: theme-styles('BBVA', 'white3');
+$bbva_bodytext: theme-styles('BBVA', 'bodytext');
+
+$navyfed_primary1: theme-styles('NavyFed', 'primary1');
+$navyfed_primary2: theme-styles('NavyFed', 'primary2');
+$navyfed_primary3: theme-styles('NavyFed', 'primary3');
+$navyfed_primary4: theme-styles('NavyFed', 'primary4');
+$navyfed_primary5: theme-styles('NavyFed', 'primary5');
+$navyfed_secondary1: theme-styles('NavyFed', 'secondary1');
+$navyfed_white1: theme-styles('NavyFed', 'white1');
+$navyfed_white2: theme-styles('NavyFed', 'white2');
+$navyfed_white3: theme-styles('NavyFed', 'white3');
+$navyfed_bodytext: theme-styles('NavyFed', 'bodytext');
+
+/* note: true Navy Fed aqua is #4a8ba0; also see their orange */
+$primary1: #5498ad; //navyfed: aqua blue
+$primary1b: #418ba2; //navyfed: aqua blue border (darker)
+$primary1c: rgba(84, 152, 173, 0.5); //navyfed: aqua blue border (lighter)
+$primary2: #042d69; //navyfed: dark blue
+$primary3: rgba(230,240,243,1); //navyfed: light blue
+$primary3b: rgba(230,240,243,0.5); //navyfed: light blue
+$secondary1: #f8f7f2; //navyfed: light beige
+$secondary2: #f3923a; //navyfed: orange
+
+
+/*
+.bg-primary1 { background-color: $primary1; }
+.bg-primary2 { background-color: $primary2; }
+.bg-primary3 { background-color: $primary3; }
+.bg-secondary1 { background-color: $secondary1; }
+.bg-secondary2 { background-color: $secondary2; }
+.text-primary { color: $text-primary; }
+.text-secondary { color: #text-secondary; }
+*/
+
+/* Button */
+.bg-btn-primary { 
+    background: rgb(243,146,58); /* Old browsers */
+    background: -moz-linear-gradient(top, rgba(243,146,58,1) 0%, rgba(237,120,15,1) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, rgba(243,146,58,1) 0%,rgba(237,120,15,1) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(243,146,58,1) 0%,rgba(237,120,15,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f3923a', endColorstr='#ed780f',GradientType=0 ); /* IE6-9 */ 
+    border: 1px solid;
+    border-bottom-color: #eb700d;
+    border-top-color: #f6a847;
+    border-left-color: #ef7e22;
+    border-right-color: #ef7e22;
+    border-image-source: linear-gradient(top,rgba(246,268,71,0) 0%, rgba(235,112,13,1) 100%);
+    border-image-slice: 1;
+  }; 
+.bg-btn-primary:disabled {
+  opacity: 0.4;
+}
+
+/* bootstrap overrides */
+/* NOTE: find a better way to do this than adding extra classes */
+
+/* Tooltips */
+.tooltip.covr-tooltip.show { 
+  opacity: 1;
+}
+
+/* BBVA Tooltips */
+.theme-BBVA .tooltip.bs-tooltip-top.covr-tooltip .arrow::before, 
+.theme-BBVA .tooltip.bs-tooltip-auto[x-placement^="top"].covr-tooltip .arrow::before  {
+  border-top-color: $bbva-primary3;
+}
+.theme-BBVA .tooltip.bs-tooltip-top .arrow::before, .tooltip.bs-tooltip-auto[x-placement^="top"] .arrow::before {
+  border-top-color: $bbva-primary3;
+}
+.theme-BBVA .tooltip.bs-tooltip-bottom.covr-tooltip .arrow::before, 
+.theme-BBVA .tooltip.bs-tooltip-auto[x-placement^="bottom"].covr-tooltip .arrow::before {
+  border-bottom-color: $bbva-primary3;
+}
+.theme-BBVA .covr-tooltip .tooltip-inner { background: $bbva-primary3; }
+
+/* NavyFed Tooltips */
+.theme-NavyFed .tooltip.bs-tooltip-top.covr-tooltip .arrow::before, 
+.theme-NavyFed .tooltip.bs-tooltip-auto[x-placement^="top"].covr-tooltip .arrow::before  {
+  border-top-color: $navyfed-primary3;
+}
+.theme-NavyFed .tooltip.bs-tooltip-top .arrow::before, .tooltip.bs-tooltip-auto[x-placement^="top"] .arrow::before {
+  border-top-color: $navyfed-primary3;
+}
+.theme-NavyFed .tooltip.bs-tooltip-bottom.covr-tooltip .arrow::before, 
+.theme-NavyFed .tooltip.bs-tooltip-auto[x-placement^="bottom"].covr-tooltip .arrow::before {
+  border-bottom-color: $navyfed-primary3;
+}
+.theme-NavyFed .covr-tooltip .tooltip-inner { background: $navyfed-primary3; }
+
+
+h1 {
+  font-size: 1.9rem;
+}
+h2 {
+  font-size: 1.6rem;
+}
+@include media-breakpoint-up(md) {
+  h1 {
+    font-size: 2.0rem;
+  }
+  h2 {
+    font-size: 2rem;
+  }
+}
+@include media-breakpoint-up(lg) {
+  h1 {
+    font-size: 2.3rem;
+  }
+  
+}
+
+.theme-BBVA h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {    
+  font-family: $bbva_titlefont;
+}
+.theme-NavyFed h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {    
+  font-family: $navyfed_titlefont;
+}
+
+
+
+/* Radio Buttons */
+.btn, button {
+  cursor: pointer;
+}
+
+/* BBVA */
+.theme-BBVA .radio-btns .btn-secondary:not([disabled]):not(.disabled):active, 
+.theme-BBVA .radio-btns .btn-secondary:not([disabled]):not(.disabled).active, 
+.theme-BBVA .radio-btns .show > .btn-secondary.dropdown-toggle {
+  background-color: $bbva-primary3;
+  border-color: $bbva-primary3;
+  box-shadow: 0 0 0 0.2rem rgba($bbva-primary4, .4);
+}
+.theme-BBVA .radio-btns .btn-secondary {
+  background-color: rgba($bbva-primary4, .7);
+  border-color: rgba($bbva-primary4, .8);
+}
+
+/* NavyFed */
+.theme-NavyFed .radio-btns .btn-secondary:not([disabled]):not(.disabled):active, 
+.theme-NavyFed .radio-btns .btn-secondary:not([disabled]):not(.disabled).active, 
+.theme-NavyFed .radio-btns .show > .btn-secondary.dropdown-toggle {
+  background-color: $navyfed-primary3;
+  border-color: $navyfed-primary3;
+  box-shadow: 0 0 0 0.2rem rgba($navyfed-primary4, .4);
+  // box-shadow: 0 0 0 0.2rem rgba(84, 152, 173, 0.5);
+}
+.theme-NavyFed .radio-btns .btn-secondary {
+  // background-color: #74acbd;
+  // border-color: #5f9caf;
+  background-color: rgba($navyfed-primary4, .8);
+  border-color: rgba($navyfed-primary4, .9);
+}

@@ -1,0 +1,30 @@
+$text-primary: #233a5e; //navyfed: dark blue
+$text-secondary: #5a9bb0; //navyfed: light blue
+
+$font_titles: "Source Sans Pro","Helvetica Neue",Helvetica,Roboto,Arial,sans-serif; //navy fed
+$font_primary: "Helvetica Neue",Helvetica,Roboto,Arial,sans-serif;
+
+button { cursor: pointer; }
+h1,h2.h3,h4,h5,h6 {    
+  font-family: $font_titles;
+}
+h1 {
+  font-size: 1.9rem;
+}
+h2 {
+  font-size: 1.6rem;
+}
+@include media-breakpoint-up(md) {
+  h1 {
+    font-size: 2.0rem;
+  }
+  h2 {
+    font-size: 2rem;
+  }
+}
+@include media-breakpoint-up(lg) {
+  h1 {
+    font-size: 2.3rem;
+  }
+  
+}
