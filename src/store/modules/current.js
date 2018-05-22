@@ -29,6 +29,10 @@ if (currentAccount == 'NavyFed') {
       currentProduct = 'Securian'
       urlHasProduct = true
       break
+    case url.indexOf('vantis') > -1:
+      currentProduct = 'Vantis'
+      urlHasProduct = true
+      break
   }
 
   if (urlHasProduct) {

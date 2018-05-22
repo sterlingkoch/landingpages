@@ -4,20 +4,15 @@
       <div class="row">
         <div class="col-sm text-left">
         	<h1 class="pr-md-5 mb-3 page-title">
-        		Up to ${{ parseNumber(product.maxFace) }} of 
-            <span
-              v-b-tooltip="{
-                title: helpContent.term, 
-                template: helpContent.template,
-                trigger: 'click hover focus'
-              }"
-              class="defined-word">term</span> 
-            life insurance for as little as ${{ product.minCost }} a month.<sup><small style="font-size: .5em;">1</small></sup>
+        		<h1 class="pr-md-5 mb-3 page-title">
+            Give them moments to remember,<br/>
+            <span class="font-italic">not debts.</span>
+          </h1>
         	</h1>
         </div>
         <div class="col-sm">
         	<div style="height:100%" class="img-fluid d-flex align-items-center justify-content-center">
-        		<img src="../assets/family.png" class="img-fluid">
+        		<img src="../../assets/family.png" class="img-fluid">
         	</div>
         </div>
       </div>
@@ -53,7 +48,7 @@
 </script>
 
 <style scoped lang="scss">
-  @import '../assets/styles/main.scss';
+  @import '../../assets/styles/main.scss';
 
   .page-title {
     text-align: center;

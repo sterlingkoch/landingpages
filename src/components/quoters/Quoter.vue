@@ -531,23 +531,23 @@
 </template>
 
 <script>
-  import StepCircle from './common/StepCircle'
-  import GetQuoteBtn from './common/GetQuoteBtn'
-  import CurrencyInput from './common/CurrencyInput'
-  import SelectStates from './common/SelectStates'
+  import StepCircle from '@/components/common/StepCircle'
+  import GetQuoteBtn from '@/components/common/GetQuoteBtn'
+  import CurrencyInput from '@/components/common/CurrencyInput'
+  import SelectStates from '@/components/common/SelectStates'
   import VueMask from 'di-vue-mask'
   import moment from 'moment'
   import { getNextHighestIndex } from '@/utils/index.js'
   import { db } from '@/utils/firebase.js'
 
   export default {
+    name: 'Quoter',
     components: {
       StepCircle,
       GetQuoteBtn,
       CurrencyInput,
       SelectStates,
       VueMask
-      // TheMask
     },
     data () {
       return {
@@ -830,11 +830,11 @@
   }
 </script>
 <style lang="scss">
-  @import '../assets/styles/main.scss';
+  @import '../../assets/styles/main.scss';
 </style>
 <style scoped lang="scss">
   @import '~bootstrap/scss/bootstrap.scss';
-  @import '../assets/styles/main.scss';
+  @import '../../assets/styles/main.scss';
 
   .help-icon { 
     cursor: help; 
