@@ -2,38 +2,50 @@
   <div class="font-family-primary">
     <div>
       <accountHeader></accountHeader >
-      <top></top>
-      <benefits></benefits>
-      <quoter></quoter>
-      <faqs></faqs>
+      <component :is="productTop"></component>
+      <benefitsMain></benefitsMain>
+      <component :is="productQuoter"></component>
+      <component :is="productFAQ"></component>
       <steps></steps>
-      <disclaimers></disclaimers>
+      <component :is="productDisclaimers"></component>
       <component :is="accountFooter"></component>
     </div>
   </div>
 </template>
 
 <script>
-  import { AccountHeader, Top, Benefits, Quoter, Faqs, Steps, Disclaimers } from '@/components'
+  import { AccountHeader, BenefitsMain, Steps } from '@/components'
   import { BBVAFooter, NavyFedFooter } from '@/components/footers'
+  import { Top, VantisTop } from '@/components/tops'
+  import { Quoter, QuoterVantis } from '@/components/quoters'
+  import { FAQ, FAQVantis } from '@/components/faqs'
+  import { Disclaimer, DisclaimerVantis } from '@/components/disclaimers'
   import { addScript } from '@/utils/index.js'
 
   export default {
     name: 'LandingPage',
     components: {
       AccountHeader,
-      Top,
-      Benefits,
+      BenefitsMain,
       Quoter,
-      Faqs,
+      QuoterVantis,
+      FAQ,
+      FAQVantis,
       Steps,
-      Disclaimers,
+      Top,
+      VantisTop,
       BBVAFooter,
-      NavyFedFooter
+      NavyFedFooter,
+      Disclaimer,
+      DisclaimerVantis
     },
     data () {
       return {
-        accountFooter: this.$store.state.current.account + 'Footer'
+        accountFooter: this.$store.state.current.account + 'Footer',
+        productTop: (this.$store.state.current.product === 'Vantis') ? 'VantisTop' : 'Top',
+        productQuoter: (this.$store.state.current.product === 'Vantis') ? 'QuoterVantis' : 'Quoter',
+        productFAQ: (this.$store.state.current.product === 'Vantis') ? 'FAQVantis' : 'FAQ',
+        productDisclaimers: (this.$store.state.current.product === 'Vantis') ? 'DisclaimerVantis' : 'Disclaimer',
       }
     },
     mounted () {

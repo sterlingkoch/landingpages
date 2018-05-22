@@ -118,6 +118,37 @@ const state = {
       military: true,
       totalFields: 5
     }
+  },
+  Vantis: {
+    minFace: 5000,
+    maxFace: 10000,
+    allowedFace: [5000, 10000, 15000, 20000],
+    minCost: 0,
+    minAge: 50,
+    maxAge: 80,
+    idealFace: 20000,
+    urlParam: 'vantis',
+    name: 'Vantis',
+    content: {
+      faqRequirement: 'Unlike most life insurance policies, no medical examination is required. Instead, you\'ll be asked some questions about your health and habits online (it doesn\'t take long).',
+      steps: [
+        {
+          title: 'Get a quote',
+          text: 'Easily select how much you need and answer three simple questions to get your initial quote.'
+        },
+        {
+          title: 'Get approved online',
+          text: 'Just enter your basic information and complete everything through our easy online process.'
+        },
+        {
+          title: 'You\'re covered',
+          text: 'Your information is reviewed instantly. Once you\'re approved, you can rest assured that your final expenses are covered!'
+        }
+      ]
+    },
+    fields: {
+      totalFields: 3
+    }
   }
 }
 
